@@ -22,6 +22,12 @@ CREATE TABLE Matricula (
     status_matricula BOOLEAN DEFAULT TRUE
 );
 
+CREATE TABLE Usuario (
+    id_usuario SERIAL PRIMARY KEY,
+    nome_usuario VARCHAR (50) NOT NULL,
+    senha VARCHAR (20) NOT NULL
+)
+
 INSERT INTO Aluno (nome_aluno, cpf, data_nascimento) 
 VALUES 
 ('Maria da Silva', 12345678901, '1995-06-15'),
@@ -39,6 +45,12 @@ VALUES
 (1, 1, '2025-05-10'),
 (2, 2, '2025-05-11'),
 (3, 3, '2025-05-12');
+
+INSERT INTO Usuario (nome_usuario, senha)
+VALUES 
+('admin', 'senha123'),
+('prof.aline', 'aline456'),
+('secretaria', 'sec789');
 
 ALTER TABLE Aluno DROP COLUMN status_aluno;
 ALTER TABLE Curso DROP COLUMN status_curso;

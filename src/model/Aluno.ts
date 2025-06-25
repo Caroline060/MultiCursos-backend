@@ -1,4 +1,5 @@
 import {DatabaseModel} from "./DataBaseModel"
+import {Matricula} from "./Matricula";
 
 const database = new DatabaseModel().pool;
 
@@ -162,6 +163,7 @@ export class Aluno {
         let queryResult = false;
         
         try {
+            await Matricula.fecharMatriculasPorAluno(id_aluno);
             const queryDeleteAluno = `DELETE FROM Aluno WHERE id_aluno=${id_aluno};`;
         
             await database.query(queryDeleteAluno)

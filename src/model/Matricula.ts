@@ -206,6 +206,18 @@ export class Matricula {
         }
     }
 
+    static async fecharMatriculasPorAluno(id_aluno: number): Promise<void> {
+        const query = `UPDATE Matricula SET status_matricula = 'fechada' WHERE id_aluno = $1`;
+        
+        await database.query(query, [id_aluno]);
+    }
+
+    static async fecharMatriculasPorCurso(id_curso: number): Promise<void> {
+        const query = `UPDATE Matricula SET status_matricula = 'fechada' WHERE id_curso = $1`;
+
+        await database.query(query, [id_curso]);
+    }
+
     static async removerMatricula(id_Matricula: number): Promise<boolean> {
         let queryResult = false;
 

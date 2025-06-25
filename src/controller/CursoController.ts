@@ -76,7 +76,7 @@ export class CursoController extends Curso {
 
     static async remover(req: Request, res: Response): Promise<any> {
         try {
-            const idCurso = parseInt(req.query.idCurso as string);
+            const idCurso = parseInt(req.params.idCurso);
             const result = await Curso.removerCurso(idCurso);
                 
             if (result) {

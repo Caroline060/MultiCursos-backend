@@ -57,8 +57,8 @@ export class AlunoController extends Aluno {
                 AlunoRecebido.cpf,
                 AlunoRecebido.dataNascimento ?? new Date("1900-01-01")
             );
-
-            AlunoAtualizado.setIdAluno(parseInt(req.query.idAluno as string));
+            
+            AlunoAtualizado.setIdAluno(parseInt(req.params.idAluno));
 
             const respostaModelo = await Aluno.atualizarCadastroAluno(AlunoAtualizado);
 
@@ -75,9 +75,10 @@ export class AlunoController extends Aluno {
         }
     }
 
+
     static async remover(req: Request, res: Response): Promise<any> {
         try {
-            const idAluno = parseInt(req.query.idAluno as string);
+            const idAluno = parseInt(req.params.idAluno);
             const result = await Aluno.removerAluno(idAluno);
                 
             if (result) {
